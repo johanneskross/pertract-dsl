@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="resources" nsURI="http://www.fortiss.org/pmwt/pertract/dsl/resources"
+    nsPrefix="org-fortiss-pmwt-pertract-dsl-resources">
+  <eClassifiers xsi:type="ecore:EClass" name="ResourceArchitecture">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="networkChannel" lowerBound="1"
+        eType="#//NetworkChannel" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resourceNodes" lowerBound="1"
+        upperBound="-1" eType="#//ResourceNode" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NetworkChannel">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bandwidth" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="latency" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ResourceNode">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="processingResourceUnit"
+        lowerBound="1" eType="#//ProcessingResourceUnit" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="driveProcessingUnit" lowerBound="1"
+        eType="#//DriveProcessingUnit" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="memoryProcessingUnit" lowerBound="1"
+        eType="#//MemoryProcessingUnit" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clusterSpecification" lowerBound="1"
+        eType="#//ClusterSpecification" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ResourceUnit" abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ProcessingResourceUnit" eSuperTypes="#//ResourceUnit">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="replications" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="processingRate" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DriveProcessingUnit" eSuperTypes="#//ResourceUnit">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="replications" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="readRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="writeRate" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MemoryProcessingUnit" eSuperTypes="#//ResourceUnit">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="capacity" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ClusterSpecification">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ResourceRole" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="SchedulingPolicy" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ResourceRole">
+    <eLiterals name="MASTER"/>
+    <eLiterals name="WORKER" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SchedulingPolicy">
+    <eLiterals name="ROUND_ROBIN"/>
+  </eClassifiers>
+</ecore:EPackage>

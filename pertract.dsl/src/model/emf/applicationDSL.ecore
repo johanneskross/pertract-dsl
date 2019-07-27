@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="application" nsURI="http://www.fortiss.org/pmwt/pertract/dsl/application"
+    nsPrefix="org-fortiss-pmwt-pertract-dsl-application">
+  <eClassifiers xsi:type="ecore:EClass" name="ApplicationExecutionArchitecture">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="framework" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="applicationConfiguration"
+        lowerBound="1" eType="#//ApplicationConfiguration" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="topNode" lowerBound="1"
+        eType="#//ExecutionNode" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ApplicationConfiguration" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultParallelism" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="executors" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="memoryPerExecutor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="taskSlotsPerExecutor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="memoryPerTaskSlot" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BatchConfiguration" eSuperTypes="#//ApplicationConfiguration"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MiniBatchConfiguration" eSuperTypes="#//ApplicationConfiguration">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="miniBatchInterval" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StreamConfiguration" eSuperTypes="#//ApplicationConfiguration"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExecutionNode">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operations" lowerBound="1"
+        upperBound="-1" eType="#//Operation" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//ExecutionNode"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//ExecutionNode" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="edgesOfChildren" upperBound="-1"
+        eType="#//DirectedEdge" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resourceProfile" eType="#//ResourceProfile"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parallelism" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="startingNode" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="spout" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataInput" eType="#//DataInput"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataInput" abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Operation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DirectedEdge">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tail" lowerBound="1" eType="#//ExecutionNode"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="head" lowerBound="1" eType="#//ExecutionNode"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dataTransmissionFactor"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ResourceProfile">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resourceDemands" lowerBound="1"
+        upperBound="-1" eType="#//ResourceDemand" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ResourceDemand">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="processingType" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="randomVariable" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parametricVariableName"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ProcessingType">
+    <eLiterals name="CPU"/>
+    <eLiterals name="DRIVE_READ" value="1"/>
+    <eLiterals name="DRIVE_WRITE" value="2"/>
+    <eLiterals name="MEMORY_ALLOCATED" value="3"/>
+    <eLiterals name="DELAY" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ApplicationType">
+    <eLiterals name="BATCH"/>
+    <eLiterals name="MINI_BATCH" value="1"/>
+    <eLiterals name="STREAM" value="2"/>
+  </eClassifiers>
+</ecore:EPackage>

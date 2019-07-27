@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>   
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated dsl -->
+      <package
+            uri="http://www.fortiss.org/pmwt/pertract/dsl/resources"
+            class="org.fortiss.pmwt.pertract.dsl.model.resources.ResourceDSLPackage"
+            genModel="src/model/emf/resourceDSL.genmodel"/>
+   </extension>
+
+</plugin>

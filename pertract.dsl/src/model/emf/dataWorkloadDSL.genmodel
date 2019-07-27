@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (C) 2018 fortiss GmbH&#xA;&#xA;This program and the accompanying materials are made&#xA;available under the terms of the Eclipse Public License 2.0&#xA;which is available at https://www.eclipse.org/legal/epl-2.0/&#xA; &#xA;Contributors:&#xA;     kross - initial implementation"
+    modelDirectory="/org.fortiss.pmwt.pertract.dsl/src/generated/java" editDirectory="/org.fortiss.pmwt.pertract.dsl.edit/src/generated/java"
+    editorDirectory="/org.fortiss.pmwt.pertract.dsl.editor/src/generated/java" modelPluginID="org.fortiss.pmwt.pertract.dsl"
+    modelName="DataWorkloadDSL" editPluginClass="org.fortiss.pmwt.pertract.dsl.model.provider.BDDSLEditPlugin"
+    editorPluginClass="org.fortiss.pmwt.pertract.dsl.model.presentation.BigDataDSLEditorPlugin"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" testsDirectory="/org.fortiss.pmwt.pertract.dsl.tests/src/generated/java"
+    testSuiteClass="org.fortiss.pmwt.pertract.dsl.tests.PerTractDSLAllTests" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="8.0" copyrightFields="false" editPluginID="org.fortiss.pmwt.pertract.dsl.edit"
+    editorPluginID="org.fortiss.pmwt.pertract.dsl.editor" language="" usedGenPackages="applicationDSL.genmodel#//application"
+    importOrganizing="true" pluginKey="dsl">
+  <foreignModel>dataWorkloadDSL.ecore</foreignModel>
+  <genPackages prefix="DataWorkloadDSL" basePackage="org.fortiss.pmwt.pertract.dsl.model"
+      disposableProviderFactory="true" fileExtensions="dsl" ecorePackage="dataWorkloadDSL.ecore#/">
+    <genClasses ecoreClass="dataWorkloadDSL.ecore#//DataWorkloadArchitecture">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataWorkloadDSL.ecore#//DataWorkloadArchitecture/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataWorkloadDSL.ecore#//DataWorkloadArchitecture/dataModels"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="dataWorkloadDSL.ecore#//DataModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataWorkloadDSL.ecore#//DataModel/dataSource"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="dataWorkloadDSL.ecore#//DataSource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataWorkloadDSL.ecore#//DataSource/partitions"/>
+    </genClasses>
+    <genClasses ecoreClass="dataWorkloadDSL.ecore#//RecordDataModel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataWorkloadDSL.ecore#//RecordDataModel/meanRecordSize"/>
+    </genClasses>
+    <genClasses ecoreClass="dataWorkloadDSL.ecore#//OpenDataSource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataWorkloadDSL.ecore#//OpenDataSource/arrivalRate"/>
+    </genClasses>
+    <genClasses ecoreClass="dataWorkloadDSL.ecore#//FileDataModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataWorkloadDSL.ecore#//FileDataModel/files"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataWorkloadDSL.ecore#//FileDataModel/partitionSize"/>
+    </genClasses>
+    <genClasses ecoreClass="dataWorkloadDSL.ecore#//FileSpecification">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataWorkloadDSL.ecore#//FileSpecification/size"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataWorkloadDSL.ecore#//FileSpecification/records"/>
+    </genClasses>
+    <genClasses ecoreClass="dataWorkloadDSL.ecore#//SingleDataSource"/>
+  </genPackages>
+</genmodel:GenModel>

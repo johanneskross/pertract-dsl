@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (C) 2018 fortiss GmbH&#xA;&#xA;This program and the accompanying materials are made&#xA;available under the terms of the Eclipse Public License 2.0&#xA;which is available at https://www.eclipse.org/legal/epl-2.0/&#xA; &#xA;Contributors:&#xA;     kross - initial implementation"
+    modelDirectory="/org.fortiss.pmwt.pertract.dsl/src/generated/java" editDirectory="/org.fortiss.pmwt.pertract.dsl.edit/src/generated/java"
+    editorDirectory="/org.fortiss.pmwt.pertract.dsl.editor/src/generated/java" modelPluginID="org.fortiss.pmwt.pertract.dsl"
+    modelName="ResourceDSL" editPluginClass="org.fortiss.pmwt.pertract.dsl.model.provider.BDDSLEditPlugin"
+    editorPluginClass="org.fortiss.pmwt.pertract.dsl.model.presentation.BigDataDSLEditorPlugin"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" testsDirectory="/org.fortiss.pmwt.pertract.dsl.tests/src/generated/java"
+    testSuiteClass="org.fortiss.pmwt.pertract.dsl.tests.PerTractDSLAllTests" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="8.0" copyrightFields="false" editPluginID="org.fortiss.pmwt.pertract.dsl.edit"
+    editorPluginID="org.fortiss.pmwt.pertract.dsl.editor" importOrganizing="true"
+    pluginKey="dsl">
+  <foreignModel>resourceDSL.ecore</foreignModel>
+  <genPackages prefix="ResourceDSL" basePackage="org.fortiss.pmwt.pertract.dsl.model"
+      disposableProviderFactory="true" fileExtensions="dsl" ecorePackage="resourceDSL.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="resourceDSL.ecore#//ResourceRole">
+      <genEnumLiterals ecoreEnumLiteral="resourceDSL.ecore#//ResourceRole/MASTER"/>
+      <genEnumLiterals ecoreEnumLiteral="resourceDSL.ecore#//ResourceRole/WORKER"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="resourceDSL.ecore#//SchedulingPolicy">
+      <genEnumLiterals ecoreEnumLiteral="resourceDSL.ecore#//SchedulingPolicy/ROUND_ROBIN"/>
+    </genEnums>
+    <genClasses ecoreClass="resourceDSL.ecore#//ResourceArchitecture">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute resourceDSL.ecore#//ResourceArchitecture/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference resourceDSL.ecore#//ResourceArchitecture/networkChannel"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference resourceDSL.ecore#//ResourceArchitecture/resourceNodes"/>
+    </genClasses>
+    <genClasses ecoreClass="resourceDSL.ecore#//NetworkChannel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute resourceDSL.ecore#//NetworkChannel/bandwidth"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute resourceDSL.ecore#//NetworkChannel/latency"/>
+    </genClasses>
+    <genClasses ecoreClass="resourceDSL.ecore#//ResourceNode">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute resourceDSL.ecore#//ResourceNode/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference resourceDSL.ecore#//ResourceNode/processingResourceUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference resourceDSL.ecore#//ResourceNode/driveProcessingUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference resourceDSL.ecore#//ResourceNode/memoryProcessingUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference resourceDSL.ecore#//ResourceNode/clusterSpecification"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="resourceDSL.ecore#//ResourceUnit"/>
+    <genClasses ecoreClass="resourceDSL.ecore#//ProcessingResourceUnit">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute resourceDSL.ecore#//ProcessingResourceUnit/replications"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute resourceDSL.ecore#//ProcessingResourceUnit/processingRate"/>
+    </genClasses>
+    <genClasses ecoreClass="resourceDSL.ecore#//DriveProcessingUnit">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute resourceDSL.ecore#//DriveProcessingUnit/replications"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute resourceDSL.ecore#//DriveProcessingUnit/readRate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute resourceDSL.ecore#//DriveProcessingUnit/writeRate"/>
+    </genClasses>
+    <genClasses ecoreClass="resourceDSL.ecore#//MemoryProcessingUnit">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute resourceDSL.ecore#//MemoryProcessingUnit/capacity"/>
+    </genClasses>
+    <genClasses ecoreClass="resourceDSL.ecore#//ClusterSpecification">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute resourceDSL.ecore#//ClusterSpecification/ResourceRole"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute resourceDSL.ecore#//ClusterSpecification/SchedulingPolicy"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

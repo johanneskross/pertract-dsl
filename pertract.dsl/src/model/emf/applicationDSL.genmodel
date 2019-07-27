@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (C) 2018 fortiss GmbH&#xA;&#xA;This program and the accompanying materials are made&#xA;available under the terms of the Eclipse Public License 2.0&#xA;which is available at https://www.eclipse.org/legal/epl-2.0/&#xA; &#xA;Contributors:&#xA;     kross - initial implementation"
+    modelDirectory="/org.fortiss.pmwt.pertract.dsl/src/generated/java" editDirectory="/org.fortiss.pmwt.pertract.dsl.edit/src/generated/java"
+    editorDirectory="/org.fortiss.pmwt.pertract.dsl.editor/src/generated/java" modelPluginID="org.fortiss.pmwt.pertract.dsl"
+    modelName="ApplicationDSL" modelPluginClass="" editPluginClass="org.fortiss.pmwt.pertract.dsl.model.provider.BDDSLEditPlugin"
+    editorPluginClass="org.fortiss.pmwt.pertract.dsl.model.presentation.BigDataDSLEditorPlugin"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" testsDirectory="/org.fortiss.pmwt.pertract.dsl.tests/src/generated/java"
+    testSuiteClass="org.fortiss.pmwt.pertract.dsl.tests.PerTractDSLAllTests" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="8.0" copyrightFields="false" editPluginID="org.fortiss.pmwt.pertract.dsl.edit"
+    editorPluginID="org.fortiss.pmwt.pertract.dsl.editor" importOrganizing="true"
+    pluginKey="dsl">
+  <foreignModel>applicationDSL.ecore</foreignModel>
+  <genPackages prefix="ApplicationDSL" basePackage="org.fortiss.pmwt.pertract.dsl.model"
+      disposableProviderFactory="true" fileExtensions="dsl" ecorePackage="applicationDSL.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="applicationDSL.ecore#//ProcessingType">
+      <genEnumLiterals ecoreEnumLiteral="applicationDSL.ecore#//ProcessingType/CPU"/>
+      <genEnumLiterals ecoreEnumLiteral="applicationDSL.ecore#//ProcessingType/DRIVE_READ"/>
+      <genEnumLiterals ecoreEnumLiteral="applicationDSL.ecore#//ProcessingType/DRIVE_WRITE"/>
+      <genEnumLiterals ecoreEnumLiteral="applicationDSL.ecore#//ProcessingType/MEMORY_ALLOCATED"/>
+      <genEnumLiterals ecoreEnumLiteral="applicationDSL.ecore#//ProcessingType/DELAY"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="applicationDSL.ecore#//ApplicationType">
+      <genEnumLiterals ecoreEnumLiteral="applicationDSL.ecore#//ApplicationType/BATCH"/>
+      <genEnumLiterals ecoreEnumLiteral="applicationDSL.ecore#//ApplicationType/MINI_BATCH"/>
+      <genEnumLiterals ecoreEnumLiteral="applicationDSL.ecore#//ApplicationType/STREAM"/>
+    </genEnums>
+    <genClasses ecoreClass="applicationDSL.ecore#//ApplicationExecutionArchitecture">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute applicationDSL.ecore#//ApplicationExecutionArchitecture/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute applicationDSL.ecore#//ApplicationExecutionArchitecture/framework"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference applicationDSL.ecore#//ApplicationExecutionArchitecture/applicationConfiguration"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference applicationDSL.ecore#//ApplicationExecutionArchitecture/topNode"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="applicationDSL.ecore#//ApplicationConfiguration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute applicationDSL.ecore#//ApplicationConfiguration/defaultParallelism"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute applicationDSL.ecore#//ApplicationConfiguration/executors"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute applicationDSL.ecore#//ApplicationConfiguration/memoryPerExecutor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute applicationDSL.ecore#//ApplicationConfiguration/taskSlotsPerExecutor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute applicationDSL.ecore#//ApplicationConfiguration/memoryPerTaskSlot"/>
+    </genClasses>
+    <genClasses ecoreClass="applicationDSL.ecore#//BatchConfiguration"/>
+    <genClasses ecoreClass="applicationDSL.ecore#//MiniBatchConfiguration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute applicationDSL.ecore#//MiniBatchConfiguration/miniBatchInterval"/>
+    </genClasses>
+    <genClasses ecoreClass="applicationDSL.ecore#//StreamConfiguration"/>
+    <genClasses ecoreClass="applicationDSL.ecore#//ExecutionNode">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute applicationDSL.ecore#//ExecutionNode/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference applicationDSL.ecore#//ExecutionNode/operations"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference applicationDSL.ecore#//ExecutionNode/parent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference applicationDSL.ecore#//ExecutionNode/children"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference applicationDSL.ecore#//ExecutionNode/edgesOfChildren"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference applicationDSL.ecore#//ExecutionNode/resourceProfile"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute applicationDSL.ecore#//ExecutionNode/parallelism"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute applicationDSL.ecore#//ExecutionNode/startingNode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute applicationDSL.ecore#//ExecutionNode/spout"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference applicationDSL.ecore#//ExecutionNode/dataInput"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="applicationDSL.ecore#//DataInput"/>
+    <genClasses ecoreClass="applicationDSL.ecore#//Operation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute applicationDSL.ecore#//Operation/name"/>
+    </genClasses>
+    <genClasses ecoreClass="applicationDSL.ecore#//DirectedEdge">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference applicationDSL.ecore#//DirectedEdge/tail"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference applicationDSL.ecore#//DirectedEdge/head"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute applicationDSL.ecore#//DirectedEdge/dataTransmissionFactor"/>
+    </genClasses>
+    <genClasses ecoreClass="applicationDSL.ecore#//ResourceProfile">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference applicationDSL.ecore#//ResourceProfile/resourceDemands"/>
+    </genClasses>
+    <genClasses ecoreClass="applicationDSL.ecore#//ResourceDemand">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute applicationDSL.ecore#//ResourceDemand/processingType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute applicationDSL.ecore#//ResourceDemand/randomVariable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute applicationDSL.ecore#//ResourceDemand/parametricVariableName"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
